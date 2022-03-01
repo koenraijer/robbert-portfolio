@@ -47,28 +47,23 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pb-4">
     {#each projects.slice(0, 2) as project}
-        <div bind:offsetHeight={height} bind:offsetWidth={width}>
-            <img {height} {width} alt="project img" src="{project.image[0].url}"/>
-        </div>
+        <a class="group grid place-items-center" in:fade="{{duration: 300 }}" href="/{project.slug}">
+            <img class="row-start-1 col-start-1" {height} {width} alt="project img" src="{project.image[0].url}"/>
+            <h2 class="row-start-1 col-start-1 p-4 text-xl invisible group-hover:visible">{project.name}</h2>
+        </a>
     {/each}
 </div>
 <div class="grid grid-cols-1 gap-4 md:gap-8">
     {#each projects.slice(2, projects.length) as project}
-        <div bind:offsetHeight={height} bind:offsetWidth={width} use:inview="{options}" on:change="{handleChange}">
+        <div use:inview="{options}" on:change="{handleChange}">
             {#if isInView}
-                <div in:fade="{{duration: 300 }}">
-                    <Image {height} {width} alt="project img" src="{project.image[0].url}"/>
-                </div>
+                <a sveltekit:prefetch class="group grid place-items-center" in:fade="{{duration: 300 }}" href="/{project.slug}">
+                    <img class="row-start-1 col-start-1" alt="project img" src="{project.image[0].url}"/>
+                    <h2 class="row-start-1 col-start-1 p-4 text-xl invisible group-hover:visible">{project.name}</h2>
+                </a>
             {:else}
-                <img {height} {width} alt="project img" src="{base64pixel}"/>
+                <img class="h-full w-full" alt="project img" src="{base64pixel}"/>
             {/if}
         </div>
     {/each}
 </div>
-
-<!--Pass width and height as props to Image component. Inside image component, graphQlRequest for that specific image.-->
-<!--
-    <IntersectionObserver {element} let:intersecting>
-            <Image bind:this={element} {height} {width} alt="project img" src="{intersecting ? project.image[0].url : base64pixel}"/>
-        </IntersectionObserver>
--->

@@ -20,6 +20,9 @@ I've created a component which automatically adds titles to each page. There's a
 ## Animation on page change 
 - Makes for app-like experience
 
+## Link prefetching for even faster page loads
+- sveltekit:prefetch 
+
 # Options
 ## What layout do you want?
 - Should the structure be project-based or timeline-based?
@@ -45,11 +48,13 @@ I can build a shopping cart and payment options.
 - Share knoppen
 - Like knop op de website bij elke foto? 
 
+## Integratie met insta feed?
+
 ## Favicon
 - Welke afbeelding?
 
 ## Budget?
 - Max amount willing to spend on website. 
 
-## Voorstel
-Ik maak een portfolio website voor je die klaar is voor gebruik, waarbij je zelf foto's kan uploaden
+# Voorstel
+Ik maak een portfolio website voor je die klaar is voor gebruik, waarbij je zelf foto's kan uploaden en alle content kan editen.

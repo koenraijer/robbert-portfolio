@@ -14,7 +14,7 @@
         </ul>
       </div>
       
-      <h1><a class="w-full text-lg">Robbert Lalisang</a></h1>
+      <h1><a href="/" sveltekit:prefetch class="w-full text-lg">Robbert Lalisang</a></h1>
       
     </div>
     <div class="navbar-end">

@@ -1,4 +1,4 @@
-<footer class="px-0 py-8 footer">
+<footer class="px-4 md:px-8 mt-8 py-8 footer bg-base-200">
     <div>
       <span class="footer-title">Robet Lalisang Photography</span> 
       <a class="link link-hover">Webshop</a> 

@@ -51,8 +51,8 @@
 			<slot />
 		</main>
 	{/key}
-
-	<Footer />
 </div>
+
+<Footer />
 
 
