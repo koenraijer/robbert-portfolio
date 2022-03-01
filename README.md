@@ -1,40 +1,55 @@
-# create-svelte
+# Features
+## Fast image loading
+- Images are stored in GraphCMS and stored on a server somewhere. With every request the website makes for an image, it first checks the screen size and then asks for an image size that fits that screen size. It also automatically converts images to WebP format, which offers best image quality for the smallest file size. 
+- Images are loaded "lazily", meaning only when scrolled into view. This prevents having to load all images upon loading the website, which would make for much slower page speeds.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## SEO friendly (= Search Engine Optimization)
+I've created a component which automatically adds titles to each page. There's also specific SEO tags added so when you share content on social media, there's automatically a banner image there to make posts more appealing. 
 
-## Creating a project
+## Fully responsive menu
+- Appears based on screen width
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Dark mode
+- Define two themes
+- Listens to user preference
+- Dark mode switch
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Fluid typography
+- Modern way of adapting text size to screen size. 
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Animation on page change 
+- Makes for app-like experience
 
-> Note: the `@next` is temporary
+# Options
+## What layout do you want?
+- Should the structure be project-based or timeline-based?
+- Do you want a "spotlight" with your latest work? 
 
-## Developing
+## Webshop
+- What do you want to sell? Every photo? Or just a selection?
+- How are you going to sell it? (yourself or 3rd party?)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+I can build a shopping cart and payment options. 
 
-```bash
-npm run dev
+## Newsletter? 
+- Possibility of keeping audience up to date, notify them when new print is available.
+- If selling stuff, it's easy to add them to the mailing list. 
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Carousel?
+- Ja of nee?
 
-## Building
+## Contactformulier? 
+- Mail naar jou of echt via een formulier? Dan krijg je een notificatie als je een mail met elk bericht. 
 
-To create a production version of your app:
+## Social media functionaliteit?
+- Share knoppen
+- Like knop op de website bij elke foto? 
 
-```bash
-npm run build
-```
+## Favicon
+- Welke afbeelding?
 
-You can preview the production build with `npm run preview`.
+## Budget?
+- Max amount willing to spend on website. 
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Voorstel
+Ik maak een portfolio website voor je die klaar is voor gebruik, waarbij je zelf foto's kan uploaden
