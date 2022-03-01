@@ -33,7 +33,7 @@
 </div>
 {/each}
 
-<h1 class="text-4xl font-semibold mb-5">{project.name}</h1>
+<h1 class="text-4xl font-semibold">{project.name}</h1>
 
 <div class="mb-5 flex justify-between">
 <div>
@@ -55,6 +55,6 @@ class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus"
 <a href={project.sourceCode}>Source Code</a>
 </div>
 
-<article class="prose prose-xl">
+<article class="prose prose-lg">
 {@html marked(project.description)}
 </article>

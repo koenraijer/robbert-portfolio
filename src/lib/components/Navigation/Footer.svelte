@@ -1,13 +1,16 @@
+<script>
+  import Menu from '@components/Navigation/Menu.svelte'
+  let bg = "bg-base-200";
+</script>
 <footer class="px-4 md:px-8 mt-8 py-8 footer bg-base-200">
     <div>
-      <span class="footer-title">Robet Lalisang Photography</span> 
-      <a class="link link-hover">Webshop</a> 
-      <a class="link link-hover">About us</a> 
-      <a class="link link-hover">Contact</a> 
-
+      <span class="footer-title font-semibold text-sm capitalize">Robet Lalisang Photography</span> 
+      <ul class="menu bg-base-200">
+        <Menu {bg}/>
+      </ul>
     </div> 
     <div>
-      <span class="footer-title">Newsletter</span> 
+      <span class="footer-title font-semibold text-sm capitalize">Newsletter</span> 
       <div class="form-control w-80">
         <label for="email" class="label">
           <span class="label-text">Enter your email address</span>

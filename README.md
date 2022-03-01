@@ -38,6 +38,9 @@ I can build a shopping cart and payment options.
 - Possibility of keeping audience up to date, notify them when new print is available.
 - If selling stuff, it's easy to add them to the mailing list. 
 
+## Colors?
+- Pick 2 colors, dan maak ik een kleurenschema op basis daarvan met voldoende contrast onderling en t.o.v. de achtergrond. 
+
 ## Carousel?
 - Ja of nee?
 
