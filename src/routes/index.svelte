@@ -24,7 +24,8 @@
 <script>
     import Image from '@components/Image/Image.svelte'
     import {inview} from 'svelte-inview'
-
+    import {fade} from 'svelte/transition'
+    
     export let projects;
     let height;
     let width;
@@ -33,8 +34,8 @@
 
     let isInView;
     const options = {
-        rootMargin: '-10%',
-        threshold: '0.10',
+        rootMargin: '-20%',
+        threshold: '0.05',
         unobserveOnEnter: true,
     };
 
@@ -47,14 +48,20 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pb-4">
     {#each projects.slice(0, 2) as project}
         <div bind:offsetHeight={height} bind:offsetWidth={width}>
-            <Image {height} {width} alt="project img" src="{project.image[0].url}"/>
+            <img {height} {width} alt="project img" src="{project.image[0].url}"/>
         </div>
     {/each}
 </div>
 <div class="grid grid-cols-1 gap-4 md:gap-8">
     {#each projects.slice(2, projects.length) as project}
         <div bind:offsetHeight={height} bind:offsetWidth={width} use:inview="{options}" on:change="{handleChange}">
-            <Image {height} {width} alt="project img" src="{isInView ? project.image[0].url : base64pixel}"/>
+            {#if isInView}
+                <div in:fade="{{duration: 300 }}">
+                    <Image {height} {width} alt="project img" src="{project.image[0].url}"/>
+                </div>
+            {:else}
+                <img {height} {width} alt="project img" src="{base64pixel}"/>
+            {/if}
         </div>
     {/each}
 </div>
