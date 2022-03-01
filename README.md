@@ -50,6 +50,9 @@ I can build a shopping cart and payment options.
 
 ## Integratie met insta feed?
 
+## Modal?
+- Popup met grote foto bij klikken. 
+
 ## Favicon
 - Welke afbeelding?
 

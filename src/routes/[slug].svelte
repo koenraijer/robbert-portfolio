@@ -26,7 +26,7 @@
 {#each project.image as image}
 <div class="h-auto mb-5">
   <img
-    class="rounded-lg object-contain"
+    class="object-contain"
     src={image.url}
     alt={project.title}
   />
