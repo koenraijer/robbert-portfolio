@@ -1,69 +1,92 @@
 <script context="module">
-    // Vanilla lazy loading: https://dev.to/ekafyi/lazy-loading-images-with-vanilla-javascript-2fbj 
-    // Svelte lazy loading: https://css-tricks.com/lazy-loading-images-in-svelte/ 
-    // MDN responsive images: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
-    // Sharp documentation: https://sharp.pixelplumbing.com 
     import {client} from '@lib/api/graphql-client'
     import {projectsQuery} from '@lib/api/graphql-queries'
 
     export const load = async () => {
         
-        let width = 1500;
-        let height = 1200;
-        const variables = {width: width, height: height}
+        let sm = 640;
+        let md = 768;
+        let lg = 1024;
+        let xl = 1280;
+        let xxl = 1536;
+
+        const variables = {sm: sm, md: md, lg: lg, xl: xl}
 
         const {projects} = await client.request(projectsQuery, variables)
 
         return {
             props: {
                 projects,
+                sm, md, lg, xl, xxl
             }
         }
     }
 </script>
 <script>
-    import Image from '@components/Image/Image.svelte'
-    import {inview} from 'svelte-inview'
-    import {fade} from 'svelte/transition'
-    
+    // Src: https://github.com/alexstaroselsky/svelte-lazy-image
     export let projects;
-    let height;
-    let width;
 
-    let base64pixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAQAAACRI2S5AAAAEklEQVR42mNMkmTACxhHFYABAMtfBF25QVgfAAAAAElFTkSuQmCC"
+    let base64pixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAQAAACRI2S5AAAAEElEQVR42mNkIAAYRxWAAQAG9gAKqv6+AwAAAABJRU5ErkJggg=="
 
-    let isInView;
-    const options = {
-        rootMargin: '-20%',
-        threshold: '0.05',
-        unobserveOnEnter: true,
-    };
+    function useLazyImage(
+        node,
+        { root = null, rootMargin = '0px 0px 0px 0px', threshold = 0.0 } = {},
+        ) {
+            if (window && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(
+                    entries => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const image = entry.target;
 
-    const handleChange = ({ detail }) => (isInView = detail.inView);
+                                if (image.dataset.src) {
+                                    image.src = image.dataset.src;
+                                }
+
+                                if (image.dataset.srcset) {
+                                    image.srcset = image.dataset.srcset;
+                                }
+
+                                observer.unobserve(image);
+                            }
+                        });
+                    },
+                    {
+                        root,
+                        rootMargin,
+                        threshold,
+                    },
+                );
+                observer.observe(node);
+
+                return {
+                    destroy() {
+                        if (observer) {
+                            observer.unobserve(node);
+                        }
+                    },
+                };
+            }
+    }
 </script>
 
-
-
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pb-4">
-    {#each projects.slice(0, 2) as project}
-        <a class="group grid place-items-center" in:fade="{{duration: 300 }}" href="/{project.slug}">
-            <img class="row-start-1 col-start-1" {height} {width} alt="project img" src="{project.image[0].url}"/>
+<div class="grid grid-cols-1 gap-4 md:gap-8">
+    {#each projects as project}
+    <div>
+        <a sveltekit:prefetch class="group grid place-items-center" href="/{project.slug}">
+            <img    
+                    class="row-start-1 col-start-1 h-full w-full" 
+                    alt="project img" 
+                    data-srcset="{project.image[0].sm} 640w, {project.image[0].md} 768w, {project.image[0].lg} 1024w, {project.image[0].xl} 1280w, {project.image[0].xxl} 1536w" 
+                    srcset="{base64pixel}"
+                    data-src="{project.image[0].xxl}"
+                    src="{base64pixel}"
+                    use:useLazyImage={{ threshold: 0.5}} 
+                    decoding="async" 
+                    loading="lazy"
+            />
             <h2 class="row-start-1 col-start-1 p-4 text-xl invisible group-hover:visible">{project.name}</h2>
         </a>
-    {/each}
-</div>
-<div class="grid grid-cols-1 gap-4 md:gap-8">
-    {#each projects.slice(2, projects.length) as project}
-        <div use:inview="{options}" on:change="{handleChange}">
-            {#if isInView}
-                <a sveltekit:prefetch class="group grid place-items-center" in:fade="{{duration: 300 }}" href="/{project.slug}">
-                    <img class="row-start-1 col-start-1" alt="project img" src="{project.image[0].url}"/>
-                    <h2 class="row-start-1 col-start-1 p-4 text-xl invisible group-hover:visible">{project.name}</h2>
-                </a>
-            {:else}
-                <img class="h-full w-full" alt="project img" src="{base64pixel}"/>
-            {/if}
-        </div>
+    </div>
     {/each}
 </div>

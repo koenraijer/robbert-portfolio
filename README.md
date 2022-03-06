@@ -1,3 +1,6 @@
+# Doelen?
+-  
+
 # Features
 ## Fast image loading
 - Images are stored in GraphCMS and stored on a server somewhere. With every request the website makes for an image, it first checks the screen size and then asks for an image size that fits that screen size. It also automatically converts images to WebP format, which offers best image quality for the smallest file size. 
@@ -32,7 +35,7 @@ I've created a component which automatically adds titles to each page. There's a
 - What do you want to sell? Every photo? Or just a selection?
 - How are you going to sell it? (yourself or 3rd party?)
 
-I can build a shopping cart and payment options. 
+I can build a shopping cart and payment options. Using Stripe. 
 
 ## Newsletter? 
 - Possibility of keeping audience up to date, notify them when new print is available.
@@ -52,7 +55,7 @@ I can build a shopping cart and payment options.
 - Like knop op de website bij elke foto? 
 
 ## Integratie met insta feed?
-
+- Ja/nee
 ## Modal?
 - Popup met grote foto bij klikken. 
 
@@ -62,5 +65,10 @@ I can build a shopping cart and payment options.
 ## Budget?
 - Max amount willing to spend on website. 
 
+## Van de voorbeelden die je gaf welke elementen wil je zelf ook terugzien?
+
 # Voorstel
 Ik maak een portfolio website voor je die klaar is voor gebruik, waarbij je zelf foto's kan uploaden en alle content kan editen.
+
+Waar mailen?
+
