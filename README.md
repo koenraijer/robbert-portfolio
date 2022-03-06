@@ -62,13 +62,5 @@ I can build a shopping cart and payment options. Using Stripe.
 ## Favicon
 - Welke afbeelding?
 
-## Budget?
-- Max amount willing to spend on website. 
-
-## Van de voorbeelden die je gaf welke elementen wil je zelf ook terugzien?
-
-# Voorstel
-Ik maak een portfolio website voor je die klaar is voor gebruik, waarbij je zelf foto's kan uploaden en alle content kan editen.
-
-Waar mailen?
-
+# TO DO
+- Preload images "above the fold"

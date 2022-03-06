@@ -15,7 +15,7 @@
 	import '../app.css';
 	import Navbar from '@components/Navigation/Navbar.svelte'
 	import Footer from '@components/Navigation/Footer.svelte'
-	import {seo} from '@lib/stores.js'
+	import {seo} from '@lib/stores'
 	import {fade} from 'svelte/transition'
 
 	export let currentRoute;
@@ -43,16 +43,16 @@
 	<!--Preloading-->
 </svelte:head>
 
-<div class="px-4 md:px-8">
+<div class="flex flex-col min-h-screen">
 	<Navbar/>
 
-	{#key currentRoute}
-		<main in:fade="{{duration: 150 }}" out:fade="{{duration: 150}}">
-			<slot />
-		</main>
-	{/key}
-</div>
+		{#key currentRoute}
+			<main class="flex-grow" in:fade="{{duration: 150 }}" out:fade="{{duration: 150}}">
+				<slot />
+			</main>
+		{/key}
 
-<Footer />
+	<Footer />
+</div>
 
 

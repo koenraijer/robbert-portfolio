@@ -1,7 +1,17 @@
 <script>
   import Menu from '@components/Navigation/Menu.svelte'
+  let y;
+  let outerHeight;
+  let scrolled = false;
+  $: if (y > outerHeight) {
+    scrolled = true;
+  } else {
+    scrolled = false;
+  }
 </script>
-<nav class="navbar px-0">
+<svelte:window bind:scrollY={y} bind:outerHeight={outerHeight}/>
+
+<nav class="navbar ease-in-out transition duration-300 {scrolled ? "bg-base-100 sticky top-0 h-16" : "bg-transparent h-20"} z-10 px-4 md:px-8">
     <div class="navbar-start w-full">
       <!--Hamburger menu-->
       <div class="dropdown dropdown-start md:hidden" tabindex="0">
@@ -20,11 +30,9 @@
     <div class="navbar-end">
       <!--Regular menu-->
       <div class="hidden md:flex">
-        <ul class="menu menu-horizontal p-2 z-50">
+        <ul class="menu menu-horizontal p-2 z-10">
           <Menu/>
         </ul>
       </div>
     </div>
   </nav>
-
-  
